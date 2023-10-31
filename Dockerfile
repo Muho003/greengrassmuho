@@ -22,7 +22,7 @@ LABEL build_step="DemoNodesROSPackage_Build"
 # Clone the demos_ros_cpp package from within the ROS Demos monorepo.
 RUN mkdir -p /ws/src
 WORKDIR /ws
-RUN git clone https://github.com/ros2/demos.git \
+RUN git clone https://github.com/Muho003/ROS2TalkerListener2 \
     -b $ROS_DISTRO \
     --no-checkout \
     --depth 1 \
@@ -30,7 +30,7 @@ RUN git clone https://github.com/ros2/demos.git \
     src/demos
     
 RUN cd src/demos && \
-    git sparse-checkout set demo_nodes_cpp
+    git sparse-checkout set demo_nodes_cpp 
     
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
     colcon build --build-base workspace/build --install-base /opt/ros_demos
