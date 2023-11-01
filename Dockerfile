@@ -23,11 +23,8 @@ LABEL build_step="DemoNodesROSPackage_Build"
 RUN mkdir -p /ws/src
 WORKDIR /ws
 RUN git clone https://github.com/Muho003/ROS2TalkerListener2 \
-    -b $ROS_DISTRO \
-    --no-checkout \
-    --depth 1 \
-    --filter=blob:none \
-    src/demos
+    -../tmp && \
+    cp -r ../tmp/humbledemos src/demos
     
 RUN cd src/demos && \
     git sparse-checkout set demo_nodes_cpp 
